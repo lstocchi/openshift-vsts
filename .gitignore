@@ -6,6 +6,7 @@ out
 *.js.map
 .taskkey
 *.vsix
+undefined
 
 # Artefacts
 *.vsix

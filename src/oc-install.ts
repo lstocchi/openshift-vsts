@@ -4,6 +4,7 @@ import tl = require('vsts-task-lib/task');
 import fs = require('fs');
 import path = require('path');
 import { ToolRunner } from 'vsts-task-lib/toolrunner';
+import { cacheUtilities } from 'packaging-common/cache/cacheUtilities';
 
 const validUrl = require('valid-url');
 const decompress = require('decompress');
@@ -189,6 +190,10 @@ export async function downloadAndExtract(
   let parts = url.split('/');
   let archive = parts[parts.length - 1];
   let archivePath = path.join(downloadDir, archive);
+  const cache = new cacheUtilities();
+
+  //download archive from cache
+  await cache.downloadCaches([archive], archivePath);
 
   if (!tl.exist(archivePath)) {
     let curl: ToolRunner = tl.tool('curl');
@@ -208,6 +213,8 @@ export async function downloadAndExtract(
     archiveType = '.tar.gz';
     expandDir = expandDir.replace('.tar', '');
   }
+
+  await cache.uploadCaches([archive], [archivePath]);
 
   let expandPath = path.join(downloadDir, expandDir);
   if (!tl.exist(expandPath)) {
@@ -249,7 +256,7 @@ export async function downloadAndExtract(
   } else {
     fs.chmodSync(ocBinary, '0755');
     return ocBinary;
-  }
+  } 
 }
 
 /**
@@ -271,3 +278,33 @@ export async function addOcToPath(ocPath: string, osType: string) {
     tl.setVariable('PATH', dir + ':' + tl.getVariable('PATH'));
   }
 }
+
+// async function downloadFromCache(archive: string, archivePath: string): Promise<boolean> {
+//   tl.debug(`downloadFromCache archive: ${archive} - path: ${archivePath}`);
+//   const blobService = azure.createBlobService();
+//   return blobService.getBlobToLocalFile('oc-install', archive, archivePath, (err: any) => {
+//     if (err) {
+//       tl.debug('downloadFromCache - err');
+//       return Promise.resolve(false);
+//     } else {
+//       tl.debug('downloadFromCache - ok');
+//       return Promise.resolve(true);
+//     }
+//   });
+  
+// }
+
+// async function uploadToCache(archive: string, archivePath: string): Promise<boolean> {
+//   tl.debug(`uploadToCache archive: ${archive} - path: ${archivePath}`);
+//   const blobService = azure.createBlobService();  
+//   return blobService.createBlockBlobFromLocalFile('oc-install', archive, archivePath, (err: any) => {
+//     if (err) {
+//       tl.debug('uploadToCache - err');
+//       return Promise.resolve(false);
+//     } else {
+//       tl.debug('uploadToCache - true');
+//       return Promise.resolve(true);
+//     }
+//   });
+  
+// }
