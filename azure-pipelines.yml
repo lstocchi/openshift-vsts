@@ -7,7 +7,7 @@ steps:
 - checkout: self
   persistCredentials: true
 
-- task: CacheBeta@2
+- task: CacheBeta@0
   inputs:
     key: 'prova'
     path: '$(System.DefaultWorkingDirectory)/.download/'
