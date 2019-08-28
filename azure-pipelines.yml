@@ -10,8 +10,8 @@ steps:
 jobs:
   - job: CacheBeta@0
     inputs:
-      key: 'prova'
-      path: '/home/vsts/work/1/s/.download/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit'
+      key: '*.tar.gz'
+      path: $(System.DefaultWorkingDirectory) + '/.download/'
   
   - job: oc-cmd@2
     inputs:
