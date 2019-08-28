@@ -9,7 +9,7 @@ steps:
 
 - task: CacheBeta@0
   inputs:
-    key: '*.tar.gz'
+    key: 'openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit'
     path: $(System.DefaultWorkingDirectory) + '/.download/'
   
 - task: oc-cmd@2
