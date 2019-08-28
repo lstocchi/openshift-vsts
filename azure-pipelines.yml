@@ -7,12 +7,6 @@ steps:
 - checkout: self
   persistCredentials: true
 
-- task: RestoreAndSaveCache@1
-  inputs:
-    keyfile: '.download/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz'
-    targetfolder: '/home/vsts/work/1/s/'
-    vstsFeed: '810871f4-3187-4e04-9f85-5d6982a14872'
-    
 - task: oc-cmd@2
   inputs:
     openshiftService: 'My Openshift'
