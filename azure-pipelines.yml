@@ -7,8 +7,8 @@ steps:
 - checkout: self
   persistCredentials: true
 
-- task: CacheBeta@0
+- task: oc-setup@2
   inputs:
-    key: 'prova'
-    path: '$(System.DefaultWorkingDirectory)/.download/'
+    key: 'prova1'
+    path: '$(System.DefaultWorkingDirectory)/.download/''
 
