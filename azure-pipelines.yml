@@ -10,7 +10,7 @@ steps:
 - task: CacheBeta@0
   inputs:
     key: 'prova'
-    path: $(System.DefaultWorkingDirectory) + '/.download/'
+    path: $(System.DefaultWorkingDirectory)/.download/
   
 - task: oc-cmd@2
   inputs:
