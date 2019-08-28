@@ -7,10 +7,8 @@ steps:
 - checkout: self
   persistCredentials: true
 
-- task: oc-cmd@2
+- task: oc-setup@2
   inputs:
-    openshiftService: 'My Openshift connection'
-    version: '3.11.0'
-    cmd: 'oc version'
-
+    key: 'prova'
+    path: '$(System.DefaultWorkingDirectory)/.download/'
 
