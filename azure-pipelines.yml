@@ -7,14 +7,13 @@ steps:
 - checkout: self
   persistCredentials: true
 
-jobs:
-  - job: CacheBeta@0
-    inputs:
-      key: '*.tar.gz'
-      path: $(System.DefaultWorkingDirectory) + '/.download/'
+- task: CacheBeta@0
+  inputs:
+    key: '*.tar.gz'
+    path: $(System.DefaultWorkingDirectory) + '/.download/'
   
-  - job: oc-cmd@2
-    inputs:
-      openshiftService: 'My Openshift'
-      version: 'v3.11.0'
-      cmd: 'oc version'
+- task: oc-cmd@2
+  inputs:
+    openshiftService: 'My Openshift'
+    version: 'v3.11.0'
+    cmd: 'oc version'
