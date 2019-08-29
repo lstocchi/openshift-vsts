@@ -11,4 +11,4 @@ steps:
   inputs:
     openshiftService: 'My Openshift'
     version: 'v3.11.0'
-    cmd: 'oc version'
+    cmd: 'oc delete pod hello-world'
