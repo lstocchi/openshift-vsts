@@ -6,9 +6,16 @@ pool:
 steps:
 - checkout: self
   persistCredentials: true
-
-- task: oc-setup@2
+- task: oc-setup@0
   inputs:
-    key: 'prova1'
-    path: '$(System.DefaultWorkingDirectory)/.download/''
+    key: 'prova2'
+    path: '$(System.DefaultWorkingDirectory)/.download/'
+
+- task: oc-cmd@2
+  inputs:
+    openshiftService: 'My Openshift'
+    version: 'v3.11.0'
+    cmd: 'oc version'
+    key: 'prova'
+    path: '$(System.DefaultWorkingDirectory)/.download/'
 
