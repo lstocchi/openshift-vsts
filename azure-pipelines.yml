@@ -6,7 +6,7 @@ stages:
     jobs:
       - deployment: 
         pool: 
-          vmImage: 'Ubuntu 16.04'
+          vmImage: 'ubuntu-latest'
         environment: 'dev'
         strategy:
           runOnce:
