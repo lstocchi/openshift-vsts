@@ -2,15 +2,20 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
 stages:
   - stage: Openshift
+    dependsOn: []
     jobs:
-      - job: Build
+      - deployment: 
         pool: 
           vmImage: 'Ubuntu 16.04'
-        continueOnError: true
-        steps:
-          - task: oc-cmd@2
-            inputs:
-              openshiftService: 'My Openshift'
-              version: 'v3.11.0'
-              cmd: 'oc version'
+        environment: 'dev'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: none
+                - task: oc-cmd@2
+                  inputs:
+                    openshiftService: 'My Openshift'
+                    version: 'v3.11.0'
+                    cmd: 'oc version'
 
