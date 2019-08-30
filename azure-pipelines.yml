@@ -17,4 +17,4 @@ stages:
                   inputs:
                     openshiftService: 'My Openshift'
                     version: 'v3.11.0'
-                    cmd: 'oc patch dc/testwildfly -p \'{"spec":{"template":{"spec":{"containers":[{"name":"nodejs-ex", "imagePullPolicy":"IfNotPresent"}]}}}}\''
+                    cmd: 'oc patch dc/testwildfly -p ''{"spec":{"template":{"spec":{"containers":[{"name":"nodejs-ex", "imagePullPolicy":"IfNotPresent"}]}}}}'''
