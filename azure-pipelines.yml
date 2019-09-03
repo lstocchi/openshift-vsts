@@ -8,10 +8,8 @@ steps:
   persistCredentials: true
 
 
-- task: oc-cmd-json@2
+- task: oc-setup@2
   inputs:
     openshiftService: 'My Openshift'
     version: 'v3.11.0'
-    cmd: 'oc patch "dc/testwildfly" -p=-json1'
-    json: '{"-json1":{"spec":{"template":{"spec":{"containers":[{"name":"testwildfly","imagePullPolicy":"IfNotPresent"}]}}}}}'
 
