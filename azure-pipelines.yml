@@ -4,10 +4,6 @@ pool:
   name: 'default'
   
 steps:
-- checkout: self
-  persistCredentials: true
-
-
 - task: oc-setup@2
   inputs:
     openshiftService: 'My Openshift'
