@@ -6,6 +6,10 @@ pool:
 steps:
 - checkout: none
   persistCredentials: true
+
+- bash: export http_proxy="http://192.99.191.232:8080"
+- bash: export https_proxy="https://192.99.191.232:8080"
+
 - task: oc-setup@2
   inputs:
     openshiftService: 'My Openshift'
