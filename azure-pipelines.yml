@@ -2,7 +2,6 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
 pool:
   name: 'default'
-  vmImage: 'Ubuntu 16.04'
   
 steps:
 - checkout: self
