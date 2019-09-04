@@ -9,6 +9,8 @@ steps:
 
 - bash: export http_proxy="http://192.99.191.232:8080"
 - bash: export https_proxy="https://192.99.191.232:8080"
+- bash: echo ${http_proxy}
+- bash: echo ${https_proxy}
 
 - task: oc-setup@2
   inputs:
