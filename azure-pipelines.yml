@@ -12,6 +12,8 @@ steps:
     openshiftService: 'My Openshift'
     version: 'v3.11.0'
     cmds: 'oc version
+
           oc get pods
+          
           oc get nodes'
 
