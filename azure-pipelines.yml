@@ -15,5 +15,5 @@ steps:
 
           oc get pods
           
-          oc get nodes'
+          oc get dc'
 
