@@ -7,13 +7,11 @@ steps:
 - checkout: none
   persistCredentials: true
 
-- bash: export http_proxy="http://192.99.191.232:8080"
-- bash: export https_proxy="https://192.99.191.232:8080"
-- bash: echo ${http_proxy}
-- bash: echo ${https_proxy}
-
-- task: oc-setup@2
+- task: oc-list-cmds@2
   inputs:
     openshiftService: 'My Openshift'
     version: 'v3.11.0'
+    cmds: 'oc version
+          oc get pods
+          oc get nodes'
 
