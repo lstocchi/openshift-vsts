@@ -1,7 +1,7 @@
 # Build NodeJS Express app using Azure Pipelines
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-16.04'
   
 steps:
 - checkout: none
@@ -14,6 +14,8 @@ steps:
     cmds: 'oc version
 
           oc get pods
+          
+          oc delete pod hello-world
           
           oc get dc'
 
