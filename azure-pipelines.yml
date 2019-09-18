@@ -1,4 +1,5 @@
 # Build NodeJS Express app using Azure Pipelines
+
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
 pool:
   vmImage: 'ubuntu-16.04'
@@ -7,15 +8,9 @@ steps:
 - checkout: none
   persistCredentials: true
 
-- task: oc-list-cmds@2
+- task: oc-cmd@2
   inputs:
     openshiftService: 'My Openshift'
     version: 'v3.11.0'
-    cmds: 'oc version
-
-          oc get pods
-          
-          oc delete pod hello-world
-          
-          oc get dc'
-
+    cmd: 'oc delete pod hello'
+    ignoreFlag: true
