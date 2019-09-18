@@ -13,7 +13,7 @@ steps:
     openshiftService: 'My Openshift'
     version: 'v3.11.0'
     cmd: 'oc delete pod hello'
-    ignoreFlag: true
+    ignoreFlag: false
 
 - task: oc-cmd@2
   inputs:
