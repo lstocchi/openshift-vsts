@@ -64,10 +64,9 @@ describe('InstallHandler', function() {
       try {
         await InstallHandler.installOc('path', 'Darwin');
         expect.fail();
-      } catch(ex) {
+      } catch (ex) {
         expect(ex).equals('Unable to download or extract oc binary.');
       }
-      
     });
 
     it('check if ocBundle is not called if uri is valid', async function() {
@@ -88,7 +87,7 @@ describe('InstallHandler', function() {
       try {
         await InstallHandler.installOc('path', 'Darwin');
         expect.fail();
-      } catch(ex) {
+      } catch (ex) {
         expect(ex).equals('Unable to download or extract oc binary.');
       }
     });
