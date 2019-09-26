@@ -9,7 +9,7 @@ steps:
 
 - task: NodeTool@0
   inputs:
-    versionSpec: '8.x'
+    versionSpec: '10.16.0'
 
 - script: npm run setup 
   displayName: Install dependencies  
@@ -20,7 +20,7 @@ steps:
 - script: npm run build
   displayName: Transpile to JavaScript 
 
-- script: npm run test:report:ci
+- script: npm run test
   displayName: Unit tests   
 
 - task: PublishTestResults@2
