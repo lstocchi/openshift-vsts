@@ -62,10 +62,10 @@ describe('InstallHandler', function() {
       sandbox.stub(validUrl, 'isWebUri').returns('');
       sandbox.stub(InstallHandler, 'ocBundleURL').resolves('');
       try {
-        const result = await InstallHandler.installOc('path', 'Darwin');
-        expect(result).to.be.null;
+        await InstallHandler.installOc('path', 'Darwin');
+        expect.fail();
       } catch(ex) {
-        
+        expect(ex).equals('Unable to download or extract oc binary.');
       }
       
     });
@@ -73,7 +73,7 @@ describe('InstallHandler', function() {
     it('check if ocBundle is not called if uri is valid', async function() {
       sandbox.stub(fs, 'existsSync').returns(true);
       const ocBundleStub = sandbox.stub(InstallHandler, 'ocBundleURL');
-      sandbox.stub(InstallHandler, 'downloadAndExtract').resolves(null);
+      sandbox.stub(InstallHandler, 'downloadAndExtract').resolves('path');
       await InstallHandler.installOc(
         'https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-mac.zip',
         'Darwin'
@@ -85,8 +85,12 @@ describe('InstallHandler', function() {
       sandbox.stub(fs, 'existsSync').returns(true);
       sandbox.stub(validUrl, 'isWebUri').returns('path');
       sandbox.stub(InstallHandler, 'downloadAndExtract').resolves(null);
-      const result = await InstallHandler.installOc('path', 'Darwin');
-      expect(result).to.be.null;
+      try {
+        await InstallHandler.installOc('path', 'Darwin');
+        expect.fail();
+      } catch(ex) {
+        expect(ex).equals('Unable to download or extract oc binary.');
+      }
     });
 
     it('check if value returned by downloadAndExtract if valid is returned', async function() {
