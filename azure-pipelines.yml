@@ -1,19 +1,14 @@
 # Build NodeJS Express app using Azure Pipeline
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
 pool:
-  vmImage: 'Ubuntu 16.04'
+  name: 'Default'
   
 steps:
 - checkout: self
   persistCredentials: true
 
-- task: CacheBeta@0
-  inputs:
-    key: 'cache'
-    path: $(System.DefaultWorkingDirectory)/.download/
-
 - task: oc-cmd@2
   inputs:
     openshiftService: 'My Openshift'
-    version: 'v3.11.0'
-    cmd: 'oc version'
+    cmd: 'oc get pods'
+    uselocalOc: true
