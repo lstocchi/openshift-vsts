@@ -1,7 +1,7 @@
 # Build NodeJS Express app using Azure Pipeline
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
 pool:
-  name: 'WindowsLocal'
+  name: 'Default'
   
 steps:
 - checkout: self
