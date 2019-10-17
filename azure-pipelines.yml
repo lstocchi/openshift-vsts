@@ -1,20 +1,22 @@
-# Build NodeJS Express app using Azure Pipeline
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
-stages:
-  - stage: Openshift
-    dependsOn: []
-    jobs:
-      - deployment: 
-        pool: 
-          vmImage: 'ubuntu-latest'
-        environment: 'dev'
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - checkout: none
-                - task: oc-cmd@2
-                  inputs:
-                    openshiftService: 'My Openshift'
-                    version: 'v3.11.0'
-                    cmd: 'oc version'
+jobs:
+- job: myjob
+  displayName: MyJob
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  # Install oc so that it can be used within a 'script' or bash 'task'
+  - task: oc-setup@2
+    displayName: Setup oc
+    inputs:
+      openshiftService: 'My Openshift'
+      version: 'v3.11.0'
+  # A script task making use of 'oc'    
+  - script: |
+      oc new-project my-project
+    displayName: 
+  # Single shot 'oc' command
+  - task: oc-cmd@2
+    displayName: Check Version
+    inputs:
+      openshiftService: 'My Openshift'
+      cmd: 'version'
