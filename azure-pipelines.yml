@@ -18,9 +18,13 @@ jobs:
           verbose: false
       - script: |
           npm install -g tfx-cli typescript json del-cli copy-node-modules markserv ts-mocha mocha mocha-junit-reporter
-          npm install
-          npm run build
         displayName: 'npm run setup, install, run build'
+      - script: |
+          npm install
+        displayName: 'npm install'
+      - script: |
+          npm run build
+        displayName: 'npm run build'
       - script: |
           ts-mocha -p tsconfig.json test/*-test.ts --timeout 5000 ${MOCHA_TAG} "--reporter" "mocha-junit-reporter" "--reporter-options" "mochaFile=out/test-report.xml"
         displayName: 'Run tests'  
@@ -45,9 +49,13 @@ jobs:
           verbose: false
       - script: |
           npm install -g tfx-cli typescript json del-cli copy-node-modules markserv ts-mocha mocha mocha-junit-reporter
-          npm install
-          npm run build
         displayName: 'npm run setup, install, run build'
+      - script: |
+          npm install
+        displayName: 'npm install'
+      - script: |
+          npm run build
+        displayName: 'npm run build'
       - script: |
           ts-mocha -p tsconfig.json test/*-test.ts --timeout 5000 ${MOCHA_TAG} "--reporter" "mocha-junit-reporter" "--reporter-options" "mochaFile=out/test-report.xml"
         displayName: 'Run tests'  
@@ -71,9 +79,13 @@ jobs:
           verbose: false
       - script: |
           npm install -g tfx-cli typescript json del-cli copy-node-modules markserv ts-mocha mocha mocha-junit-reporter
-          npm install
-          npm run build
         displayName: 'npm run setup, install, run build'
+      - script: |
+          npm install
+        displayName: 'npm install'
+      - script: |
+          npm run build
+        displayName: 'npm run build'
       - script: |
           ts-mocha -p tsconfig.json test/*-test.ts --timeout 5000 ${MOCHA_TAG} "--reporter" "mocha-junit-reporter" "--reporter-options" "mochaFile=out/test-report.xml"
         displayName: 'Run tests'  
