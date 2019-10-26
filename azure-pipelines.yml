@@ -15,12 +15,12 @@ jobs:
         inputs:
           verbose: false
       - script: |
-          npm install -g tfx-cli typescript json del-cli copy-node-modules markserv ts-mocha
+          npm run setup
           npm install --save-dev
           npm run build
         displayName: 'npm run setup, install, run build'
       - script: |
-          ts-mocha -p tsconfig.json test/*-test.ts --timeout 5000 ${MOCHA_TAG} "--reporter" "mocha-junit-reporter" "--reporter-options" "mochaFile=out/test-report.xml"
+          node_modules\ts-mocha\bin\ts-mocha -p tsconfig.json test/*-test.ts --timeout 5000 ${MOCHA_TAG} "--reporter" "mocha-junit-reporter" "--reporter-options" "mochaFile=out/test-report.xml"
         displayName: 'Run tests'  
       - task: PublishTestResults@2
         inputs:
