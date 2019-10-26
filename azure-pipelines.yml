@@ -24,7 +24,7 @@ jobs:
           npm run build
         displayName: 'npm run build'
       - script: |
-          node_modules\ts-mocha\bin\ts-mocha -p tsconfig.json test/*-test.ts --timeout 5000 ${MOCHA_TAG} "--reporter" "mocha-junit-reporter" "--reporter-options" "mochaFile=out/test-report.xml"
+          node_modules\\ts-mocha\\bin\\ts-mocha -p tsconfig.json test/*-test.ts --timeout 5000 ${MOCHA_TAG} "--reporter" "mocha-junit-reporter" "--reporter-options" "mochaFile=out/test-report.xml"
         displayName: 'Run tests'  
       - task: PublishTestResults@2
         inputs:
