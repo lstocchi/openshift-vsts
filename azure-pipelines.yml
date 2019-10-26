@@ -15,7 +15,7 @@ jobs:
         inputs:
           verbose: false
       - script: |
-          npm install -g tfx-cli typescript json del-cli copy-node-modules markserv ts-mocha mocha
+          npm install -g tfx-cli typescript json del-cli copy-node-modules markserv ts-mocha mocha mocha-junit-reporter
         displayName: 'npm run setup, install, run build'
       - script : |
           npm install --save-dev
