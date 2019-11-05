@@ -2,23 +2,11 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    name: 'Default'
+    vmImage: 'ubuntu-latest'
   steps:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
       version: 'v3.11.0'
-      cmd: 'oc start-build nodejs-ex --follow'
+      cmd: 'oc version'
       uselocalOc: true
-  - task: oc-cmd@2
-    inputs:
-      openshiftService: 'My Openshift'
-      cmd: 'oc status'
-      uselocalOc: true
-
-  - task: oc-cmd@2
-    inputs:
-      openshiftService: 'My Openshift'
-      cmd: 'oc get pods'
-      uselocalOc: true
-  
