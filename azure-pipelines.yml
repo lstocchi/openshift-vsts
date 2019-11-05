@@ -8,7 +8,7 @@ jobs:
     inputs:
       openshiftService: 'My Openshift'
       version: 'v3.11.0'
-      cmd: 'oc new-app https://github.com/lstocchi/nodejs-ex -l name=demoapp'
+      cmd: 'oc start-build nodejs-ex --follow'
       uselocalOc: true
   - task: oc-cmd@2
     inputs:
