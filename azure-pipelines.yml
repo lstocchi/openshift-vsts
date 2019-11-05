@@ -4,19 +4,10 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  # Install oc so that it can be used within a 'script' or bash 'task'
-  - task: oc-setup@2
-    displayName: Setup oc
+  - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
       version: 'v3.11.0'
-  # A script task making use of 'oc'    
-  - script: |
-      oc new-project my-project
-    displayName: 
-  # Single shot 'oc' command
-  - task: oc-cmd@2
-    displayName: Check Version
-    inputs:
-      openshiftService: 'My Openshift'
-      cmd: 'version'
+      cmd: 'oc version'
+      uselocalOc: true
+  
