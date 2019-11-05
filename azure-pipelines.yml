@@ -14,7 +14,6 @@ jobs:
       openshiftService: 'My Openshift'
       cmd: 'oc status'
       uselocalOc: true
-
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
