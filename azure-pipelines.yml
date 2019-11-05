@@ -8,6 +8,17 @@ jobs:
     inputs:
       openshiftService: 'My Openshift'
       version: 'v3.11.0'
-      cmd: 'oc version'
+      cmd: 'oc new-app https://github.com/lstocchi/nodejs-ex -l name=demoapp'
+      uselocalOc: true
+  - task: oc-cmd@2
+    inputs:
+      openshiftService: 'My Openshift'
+      cmd: 'oc status'
+      uselocalOc: true
+
+  - task: oc-cmd@2
+    inputs:
+      openshiftService: 'My Openshift'
+      cmd: 'oc get pods'
       uselocalOc: true
   
