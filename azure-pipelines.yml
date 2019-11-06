@@ -2,11 +2,10 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    name: 'Default'
+    vmImage: 'ubuntu-latest'
   steps:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
       version: 'v3.11.0'
       cmd: 'oc version'
-      uselocalOc: true
