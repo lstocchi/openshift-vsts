@@ -4,6 +4,7 @@ import tl = require('vsts-task-lib/task');
 import fs = require('fs');
 import path = require('path');
 import { ToolRunner } from 'vsts-task-lib/toolrunner';
+import { LINUX, OC_TAR_GZ, MACOSX, WIN, OC_ZIP, OPENSHIFT_V3_BASE_URL, OPENSHIFT_V4_BASE_URL } from './constants';
 
 const validUrl = require('valid-url');
 const decompress = require('decompress');
@@ -99,34 +100,56 @@ export class InstallHandler {
    * Returns the download URL for the oc CLI for a given release tag.
    * The binary type is determined by the agent's operating system.
    *
-   * @param {string} tag The release tag.
+   * @param {string} version Oc version.
    * @param osType the OS type. One of 'Linux', 'Darwin' or 'Windows_NT'.
    * @returns {Promise} Promise string representing the URL to the tarball. null is returned
    * if no matching URL can be determined for the given tag.
    */
   static async ocBundleURL(
-    tag: string,
+    version: string,
     osType: string
   ): Promise<string | null> {
-    tl.debug(`determining tarball URL for tag ${tag}`);
+    tl.debug(`determining tarball URL for version ${version}`);
 
-    if (!tag) {
+    if (!version) {
       return null;
     }
 
-    // determine the bundle suffix on GitHub based on the OS type
-    let expr = '';
+    // remove char v if present to ensure old pipelines keep working when the extension will be updated
+    if (version.startsWith('v')) {
+      version = version.substr(1);
+    }
+
+    let url: string = '';
+    // determine the base_url based on version
+    const vMajorRegEx: RegExpExecArray = new RegExp('\d+(?=\.)').exec(version);
+    if (!vMajorRegEx || vMajorRegEx.length === 0) {
+      tl.debug('Error retrieving version');
+      return null;
+    }
+    const vMajor: number = +vMajorRegEx[0];
+
+    if (vMajor === 3) {
+      url = `${OPENSHIFT_V3_BASE_URL}/${version}`;
+    } else if (vMajor === 4) {
+      url = `${OPENSHIFT_V4_BASE_URL}/${version}`;
+    } else {
+      tl.debug('Invalid version');
+      return null;
+    }
+
+    // determine the bundle path based on the OS type
     switch (osType) {
       case 'Linux': {
-        expr = '^.*-linux-64bit.tar.gz$';
+        url += `${LINUX}/${OC_TAR_GZ}`;
         break;
       }
       case 'Darwin': {
-        expr = '^.*-mac.zip$';
+        url += `${MACOSX}/${OC_TAR_GZ}`;
         break;
       }
       case 'Windows_NT': {
-        expr = '^.*-windows.zip$';
+        url += `${WIN}/${OC_ZIP}`;
         break;
       }
       default: {
@@ -138,7 +161,7 @@ export class InstallHandler {
       .getReleaseByTag({
         owner: 'openshift',
         repo: 'origin',
-        tag: tag
+        tag: version
       })
       .then((result: any) => {
         if (result.data.length === 0) {
