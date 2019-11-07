@@ -55,34 +55,34 @@ describe('InstallHandler', function() {
       }
     });
 
-    it('check if ocBundleURl is called if version number is passed as input', async function() {
-      sandbox.stub(fs, 'existsSync').returns(true);
-      const bundleStub = sandbox
-        .stub(InstallHandler, 'ocBundleURL')
-        .resolves(
-          'https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.1/windows/oc.zip'
-        );
-      sandbox.stub(InstallHandler, 'downloadAndExtract').resolves('path');
-      await InstallHandler.installOc('4.1', 'Windows_NT');
-      expect(bundleStub.calledOnce).to.be.true;
-    });
+    // it('check if ocBundleURl is called if version number is passed as input', async function() {
+    //   sandbox.stub(fs, 'existsSync').returns(true);
+    //   const bundleStub = sandbox
+    //     .stub(InstallHandler, 'ocBundleURL')
+    //     .resolves(
+    //       'https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.1/windows/oc.zip'
+    //     );
+    //   sandbox.stub(InstallHandler, 'downloadAndExtract').resolves('path');
+    //   await InstallHandler.installOc('4.1', 'Windows_NT');
+    //   expect(bundleStub.calledOnce).to.be.true;
+    // });
 
-    it('check if ocBundleURl is called twice if version number release as input is not valid', async function() {
-      sandbox.stub(fs, 'existsSync').returns(true);
-      const bundleStub = sandbox
-        .stub(InstallHandler, 'ocBundleURL')
-        .onFirstCall()
-        .resolves(
-          'https://mirror.openshift.com/pub/openshift-v4/clients/oc/3.1/windows/oc.zip'
-        )
-        .onSecondCall()
-        .resolves(
-          'https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.1/windows/oc.zip'
-        );
-      sandbox.stub(InstallHandler, 'downloadAndExtract').resolves('path');
-      await InstallHandler.installOc('4.1', 'Windows_NT');
-      expect(bundleStub.calledTwice).to.be.true;
-    });
+    // it('check if ocBundleURl is called twice if version number release as input is not valid', async function() {
+    //   sandbox.stub(fs, 'existsSync').returns(true);
+    //   const bundleStub = sandbox
+    //     .stub(InstallHandler, 'ocBundleURL')
+    //     .onFirstCall()
+    //     .resolves(
+    //       'https://mirror.openshift.com/pub/openshift-v4/clients/oc/3.1/windows/oc.zip'
+    //     )
+    //     .onSecondCall()
+    //     .resolves(
+    //       'https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.1/windows/oc.zip'
+    //     );
+    //   sandbox.stub(InstallHandler, 'downloadAndExtract').resolves('path');
+    //   await InstallHandler.installOc('4.1', 'Windows_NT');
+    //   expect(bundleStub.calledTwice).to.be.true;
+    // });
 
     it('check if ocBundle is not called if uri is valid', async function() {
       sandbox.stub(fs, 'existsSync').returns(true);
@@ -95,23 +95,23 @@ describe('InstallHandler', function() {
       expect(ocBundleStub.calledOnce).to.be.false;
     });
 
-    it('return error if url retrieved by version number is null', async function() {
-      sandbox.stub(fs, 'existsSync').returns(true);
-      sandbox
-        .stub(InstallHandler, 'ocBundleURL')
-        .onFirstCall()
-        .resolves(
-          'https://mirror.openshift.com/pub/openshift-v4/clients/oc/3.1/windows/oc.zip'
-        )
-        .onSecondCall()
-        .resolves(null);
-      try {
-        await InstallHandler.installOc('4.1', 'Windows_NT');
-        expect.fail();
-      } catch (ex) {
-        expect(ex).equals('Unable to determine oc download URL.');
-      }
-    });
+    // it('return error if url retrieved by version number is null', async function() {
+    //   sandbox.stub(fs, 'existsSync').returns(true);
+    //   sandbox
+    //     .stub(InstallHandler, 'ocBundleURL')
+    //     .onFirstCall()
+    //     .resolves(
+    //       'https://mirror.openshift.com/pub/openshift-v4/clients/oc/3.1/windows/oc.zip'
+    //     )
+    //     .onSecondCall()
+    //     .resolves(null);
+    //   try {
+    //     await InstallHandler.installOc('4.1', 'Windows_NT');
+    //     expect.fail();
+    //   } catch (ex) {
+    //     expect(ex).equals('Unable to determine oc download URL.');
+    //   }
+    // });
 
     it('check if task fails if downloadAndExtract doesnt return a valid ocBinary', async function() {
       sandbox.stub(fs, 'existsSync').returns(true);
