@@ -2,10 +2,10 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    vmImage: 'ubuntu-latest'
+    name: Hosted macOS
   steps:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
-      version: '4.1'
+      version: 'v3.11.0'
       cmd: 'oc version'
