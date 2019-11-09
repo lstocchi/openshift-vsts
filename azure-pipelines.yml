@@ -7,5 +7,5 @@ jobs:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
-      version: 'https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.2.2/openshift-client-linux-4.2.2.tar.gz'
+      version: 'https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.2.2/openshift-client-windows-4.2.2.zip'
       cmd: 'oc version'
