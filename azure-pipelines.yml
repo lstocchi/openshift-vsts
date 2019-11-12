@@ -2,10 +2,10 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    vmImage: 'Ubuntu 16.04'
+    name: 'Default'
   steps:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
-      version: 'v4.1'
+      version: 'https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux-4.2.2.tar.gz'
       cmd: 'oc version'
