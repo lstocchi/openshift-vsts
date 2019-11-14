@@ -6,5 +6,5 @@ jobs:
   steps:
   - task: CmdLine@2
     inputs:
-      script: 'realpath ./.rsp'
+      script: 'readlink -f ./.rsp'
   
