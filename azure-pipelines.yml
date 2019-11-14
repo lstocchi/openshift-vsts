@@ -2,10 +2,9 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    name: 'Default'
+    vmImage: 'macOS-latest'
   steps:
-  - task: oc-cmd@2
+  - task: CmdLine@2
     inputs:
-      openshiftService: 'My Openshift'
-      version: 'https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux-4.2.2.tar.gz'
-      cmd: 'oc version'
+      script: 'realpath ./.rsp'
+  
