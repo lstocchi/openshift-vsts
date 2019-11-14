@@ -6,5 +6,12 @@ jobs:
   steps:
   - task: CmdLine@2
     inputs:
-      script: 'readlink ./.rsp'
+      script: |
+        cd "$(dirname -- "./.rsp")"
+        
+        dir="$PWD"
+        
+        echo "$dir"
+        
+        cd - > /dev/null
   
