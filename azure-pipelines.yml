@@ -7,7 +7,7 @@ jobs:
   - task: CmdLine@2
     inputs:
       script: |
-        cd "$(dirname -- "./.rsp")"
+        cd ./.rsp
         
         dir="$PWD"
         
