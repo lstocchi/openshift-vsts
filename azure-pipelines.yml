@@ -2,7 +2,7 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    name: 'Default'
+    vmImage: 'Ubuntu-latest'
   steps:
   - task: oc-cmd@2
     inputs:
