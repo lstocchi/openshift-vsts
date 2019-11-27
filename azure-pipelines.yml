@@ -2,7 +2,7 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    vmImage: 'Ubuntu 16.04'
+    vmImage: 'windows-latest'
   steps:
   - task: CmdLine@2
     inputs:
