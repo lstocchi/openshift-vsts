@@ -2,11 +2,8 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    vmImage: 'macOS-latest'
+    vmImage: 'windows-latest'
   steps:
-  - task: CmdLine@2
-    inputs:
-      script: 'ls ${SYSTEM_DEFAULTWORKINGDIRECTORY}'
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
