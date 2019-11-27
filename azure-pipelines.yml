@@ -7,8 +7,10 @@ jobs:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
+      version: '3.11'
       cmd: 'oc version'
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
+      version: '3.11'
       cmd: 'oc get pods'
