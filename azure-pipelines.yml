@@ -7,5 +7,5 @@ jobs:
   - task: CmdLine@2
     inputs:
       script: |
-        echo $Agent.BuildDirectory
+        echo '$(Agent.BuildDirectory)/gopath'
   
