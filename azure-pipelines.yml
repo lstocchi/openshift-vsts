@@ -7,5 +7,5 @@ jobs:
   - task: CmdLine@2
     inputs:
       script: |
-        echo ${System_DefaultWorkingDirectory}
+        echo $System_DefaultWorkingDirectory
   
