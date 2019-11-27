@@ -6,7 +6,7 @@ jobs:
   steps:
   - task: CmdLine@2
     inputs:
-      script: 'ls ${Build.Repository.LocalPath}'
+      script: 'ls ${SYSTEM_DEFAULTWORKINGDIRECTORY}'
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
