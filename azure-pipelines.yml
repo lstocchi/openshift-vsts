@@ -4,6 +4,9 @@ jobs:
   pool:
     name: 'Default'
   steps:
+  - task: CmdLine@2
+    inputs:
+      script: 'ls $(Build.Repository.LocalPath)'
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
