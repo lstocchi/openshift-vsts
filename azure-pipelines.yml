@@ -2,15 +2,15 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    vmImage: 'windows-latest'
+    vmImage: 'ubuntu-latest'
   steps:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
-      version: 'https://mirror.openshift.com/pub/openshift-v3/clients/3.11.154/windows/oc.zip'
+      version: '4.1'
       cmd: 'oc version'
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
-      version: 'https://mirror.openshift.com/pub/openshift-v3/clients/3.11.154/windows/oc.zip'
+      version: '4.1'
       cmd: 'oc get pods'
