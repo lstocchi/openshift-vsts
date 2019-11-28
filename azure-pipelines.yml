@@ -7,10 +7,10 @@ jobs:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
-      version: '3.11.0'
+      version: 'https://mirror.openshift.com/pub/openshift-v3/clients/3.11.154/windows/oc.zip'
       cmd: 'oc version'
   - task: oc-cmd@2
     inputs:
       openshiftService: 'My Openshift'
-      version: '3.11.0'
+      version: 'https://mirror.openshift.com/pub/openshift-v3/clients/3.11.154/windows/oc.zip'
       cmd: 'oc get pods'
