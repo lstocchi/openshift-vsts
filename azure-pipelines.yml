@@ -1,16 +1,45 @@
 jobs:
-- job: myjob
-  displayName: MyJob
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-  - task: oc-cmd@2
-    inputs:
-      openshiftService: 'My Openshift'
-      version: '4.1'
-      cmd: 'oc version'
-  - task: oc-cmd@2
-    inputs:
-      openshiftService: 'My Openshift'
-      version: '4.2'
-      cmd: 'oc get pods'
+  - job: Windows
+    pool:
+      name: Hosted VS2017
+      demands: npm
+    steps:
+    - task: oc-cmd@2
+      inputs:
+        openshiftService: 'My Openshift'
+        version: '4.1'
+        cmd: 'oc version'
+    - task: oc-cmd@2
+      inputs:
+        openshiftService: 'My Openshift'
+        version: '4.2'
+        cmd: 'oc get pods'
+  - job: macOS
+    pool:
+      name: Hosted macOS
+      demands: npm
+    steps:
+    - task: oc-cmd@2
+      inputs:
+        openshiftService: 'My Openshift'
+        version: '4.1'
+        cmd: 'oc version'
+    - task: oc-cmd@2
+      inputs:
+        openshiftService: 'My Openshift'
+        version: '4.2'
+        cmd: 'oc get pods'
+  - job: Linux
+    pool:
+      name: Hosted Ubuntu 1604
+    steps:
+    - task: oc-cmd@2
+      inputs:
+        openshiftService: 'My Openshift'
+        version: '4.1'
+        cmd: 'oc version'
+    - task: oc-cmd@2
+      inputs:
+        openshiftService: 'My Openshift'
+        version: '4.2'
+        cmd: 'oc get pods'
