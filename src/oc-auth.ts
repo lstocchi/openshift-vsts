@@ -3,17 +3,17 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 import * as fs from 'fs';
-import { RunnerHandler } from './oc-exec';
+import path = require('path');
+
+import task = require('azure-pipelines-task-lib/task');
+import tl = require('azure-pipelines-task-lib/task');
 import {
   BASIC_AUTHENTICATION,
   NO_AUTHENTICATION,
   TOKEN_AUTHENTICATION,
   RUNTIME_CONFIGURATION_OPTION,
 } from './constants';
-
-import task = require('azure-pipelines-task-lib/task');
-import tl = require('azure-pipelines-task-lib/task');
-import path = require('path');
+import { RunnerHandler } from './oc-exec';
 
 export interface OpenShiftEndpoint {
   /** URL to the OpenShiftServer */

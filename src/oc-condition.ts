@@ -68,10 +68,6 @@ export class ConditionHandler {
         return status;
     }
 
-    static async sleep(ms: number):Promise<NodeJS.Timeout> {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
     static getConditionCommandListener(resource: string): string {
         return `get ${resource} -o name --watch=true`;
     }

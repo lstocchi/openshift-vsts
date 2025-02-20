@@ -6,14 +6,13 @@ import * as fs from 'fs';
 import { ToolRunner, IExecSyncResult } from 'azure-pipelines-task-lib/toolrunner';
 import * as toolLib from 'azure-pipelines-tool-lib/tool';
 import * as semver from 'semver';
+import tl = require('azure-pipelines-task-lib/task');
+import path = require('path');
+import fetch from 'node-fetch';
 import { RunnerHandler } from './oc-exec';
 import { LINUXV3, MACOSXV3, WINV3, LINUXV4, MACOSXV4, WINV4, OC_TAR_GZ, OC_ZIP, LATEST, ZIP, TAR_GZ } from './constants';
 import { unzipArchive } from './utils/zip_helper';
 import { BinaryVersion, FindBinaryStatus } from './utils/exec_helper';
-
-import tl = require('azure-pipelines-task-lib/task');
-import path = require('path');
-import fetch = require('node-fetch');
 
 export class InstallHandler {
   /**

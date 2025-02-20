@@ -16,11 +16,9 @@ export function run(): Promise<void> {
   // Create the mocha test
   const mocha = new Mocha({
     ui: 'tdd',
-    useColors: true,
     timeout: 50000,
     slow: 50000
   });
-  mocha.useColors(true);
 
   const testsRoot = path.resolve(__dirname);
 

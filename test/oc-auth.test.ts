@@ -16,7 +16,6 @@ import * as Task from 'azure-pipelines-task-lib/task';
 import path = require('path');
 
 const chai = require('chai');
-chai.use(require('chai-fs'));
 
 const { expect } = chai;
 

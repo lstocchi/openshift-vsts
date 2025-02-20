@@ -24,11 +24,11 @@
       }
     ],
     "version": {
-      "Major": 3,
+      "Major": 4,
       "Minor": 0,
-      "Patch": 2
+      "Patch": 1
     },
-    "minimumAgentVersion": "2.144.0",
+    "minimumAgentVersion": "3.232.1",
     "instanceNameFormat": "Oc Conditional Cmd",
     "inputs": [
       {
@@ -178,7 +178,7 @@
       }
     ],
     "execution": {
-      "Node10": {
+      "Node20_1": {
         "target": "lib/oc-conditional-exec-task.js",
         "workingDirectory": "$(currentDirectory)"
       }
